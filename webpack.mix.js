@@ -24,8 +24,8 @@ fs.removeSync(distRelativePath)
 mix
   .setPublicPath(distRelativePath)
   .polyfill()
-  .js(
-    `${srcRelativePath}/assets/js/app.js`,
+  .ts(
+    `${srcRelativePath}/assets/ts/app.ts`,
     `${distRelativePath}/assets/js`
   )
   .eslint()
@@ -77,7 +77,7 @@ mix
     ],
     https:
       process.env.MIX_BROWSER_SYNC_HTTPS_CERT &&
-      process.env.MIX_BROWSER_SYNC_HTTPS_KEY
+        process.env.MIX_BROWSER_SYNC_HTTPS_KEY
         ? {
           cert: process.env.MIX_BROWSER_SYNC_HTTPS_CERT,
           key: process.env.MIX_BROWSER_SYNC_HTTPS_KEY
@@ -108,13 +108,13 @@ mix
 if (process.env.NODE_ENV === 'production') {
   mix
     .imagemin(
-      [ 'assets/images/**/*' ],
+      ['assets/images/**/*'],
       { context: srcRelativePath },
       {
-        test: filePath => !!multimatch(filePath, [ 'assets/images/**/*' ]).length,
-        pngquant: { strip: true, quality: 100-100 }, // 0 ~ 100
+        test: filePath => !!multimatch(filePath, ['assets/images/**/*']).length,
+        pngquant: { strip: true, quality: 100 - 100 }, // 0 ~ 100
         gifsicle: { optimizationLevel: 1 }, // 1 ~ 3
-        plugins: [ require('imagemin-mozjpeg')({ quality: 100 }) ] // 0 ~ 100
+        plugins: [require('imagemin-mozjpeg')({ quality: 100 })] // 0 ~ 100
       }
     )
     .then(() => {

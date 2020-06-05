@@ -39,6 +39,8 @@
     "stylelint-scss": "^3.6.1",
     "stylelint-webpack-plugin": "^0.10.5",
     "svg-spritemap-webpack-plugin": "<=3.3.5",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
     "vue-template-compiler": "^2.6.10"
   },
   "repository": {
@@ -47,5 +49,8 @@
   "engines": {
     "node": ">=10.14.2",
     "npm": ">=6.4.1"
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
   }
 }
